@@ -1,0 +1,15 @@
+services:
+  potty-timer:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./.env:/app/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WDS_SOCKET_PORT=0
+      - REACT_APP_NODE_ENV=development
+    stdin_open: true
+    tty: true
